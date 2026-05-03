@@ -34,7 +34,6 @@ public class PedidoService {
                             }
                         }
 
-                        // duplicación
                         double total2 = 0;
                         for(ItemPedido item : p.items){
                             total2 += item.producto.precio * item.cantidad;
