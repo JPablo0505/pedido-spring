@@ -18,7 +18,7 @@ public class PedidoController {
     public Pedido crear(@RequestBody Pedido pedido){
 
         Cupon c = new Cupon();
-        c.codigo = "PROMO10";
+        c.setCodigo("PROMO10");
 
         return service.procesar(pedido, c);
     }

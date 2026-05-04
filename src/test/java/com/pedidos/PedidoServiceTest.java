@@ -20,23 +20,23 @@ public class PedidoServiceTest {
         Pedido p = new Pedido();
 
         Cliente c = new Cliente();
-        c.saldo = 10000;
-        c.tipo = "VIP";
+        c.setSaldo(10000);
+        c.setTipo("VIP");
 
-        p.cliente = c;
+        p.setCliente(c);
 
         Producto pr = new Producto();
-        pr.precio = 1000;
+        pr.setPrecio(1000);
 
         ItemPedido item = new ItemPedido();
-        item.producto = pr;
-        item.cantidad = 2;
+        item.setProducto(pr);
+        item.setCantidad(2);
 
-        p.items.add(item);
+        p.getItems().add(item);
 
         Pedido res = service.procesar(p, null);
 
         assertNotNull(res);
-        assertEquals("PAGADO", res.estado);
+        assertEquals("PAGADO", res.getEstado());
     }
 }

@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 public class CuponService {
 
     public double aplicar(double total, Cupon c){
-        if(c != null){
-            if(c.codigo != null){
-                if(c.codigo.equals("PROMO10")){
-                    return total * 0.9;
-                } else if(c.codigo.equals("PROMO20")){
-                    return total * 0.8;
-                }
-            }
+        if(c == null || c.getCodigo() == null){
+            return total;
+        }
+        if("PROMO10".equals(c.getCodigo())){
+            return total * 0.9;
+        } 
+        if("PROMO20".equals(c.getCodigo())){
+            return total * 0.8;
         }
         return total;
     }
