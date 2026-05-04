@@ -34,7 +34,7 @@ class PedidoServiceTest {
 
         pedido.getItems().add(item);
 
-        when(pagoService.pagar(pedido)).thenReturn(false);
+        when(pagoService.pagar(eq(pedido), anyDouble())).thenReturn(false);
 
         // Act
         Pedido resultado = service.procesar(pedido, null);

@@ -31,7 +31,7 @@ public class PedidoService {
         total = cuponService.aplicar(total, c);
         total = aplicarDescuentoVip(total, p.getCliente());
 
-        p.setEstado(pagoService.pagar(p) ? "PAGADO" : "RECHAZADO");
+        p.setEstado(pagoService.pagar(p, total) ? "PAGADO" : "RECHAZADO");
         repo.guardar(p);
 
         return p;

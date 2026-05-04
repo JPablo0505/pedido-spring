@@ -2,6 +2,9 @@ package com.pedidos.service;
 
 import com.pedidos.model.Cupon;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CuponServiceTest {
@@ -23,33 +26,18 @@ class CuponServiceTest {
         assertEquals(100.0, resultado);
     }
 
-    @Test
-    void aplicar_DebeAplicarPromo10() {
+    @ParameterizedTest
+    @CsvSource({
+            "PROMO10, 90.0",
+            "PROMO20, 80.0",
+            "INVALIDO, 100.0"
+    })
+    void aplicar_DebeAplicarCuponCorrectamente(String codigo, double esperado) {
         CuponService service = new CuponService();
         Cupon cupon = new Cupon();
-        cupon.setCodigo("PROMO10");
+        cupon.setCodigo(codigo);
         double total = 100.0;
         double resultado = service.aplicar(total, cupon);
-        assertEquals(90.0, resultado);
-    }
-
-    @Test
-    void aplicar_DebeAplicarPromo20() {
-        CuponService service = new CuponService();
-        Cupon cupon = new Cupon();
-        cupon.setCodigo("PROMO20");
-        double total = 100.0;
-        double resultado = service.aplicar(total, cupon);
-        assertEquals(80.0, resultado);
-    }
-
-    @Test
-    void aplicar_DebeRetornarTotalOriginal_SiCodigoNoEsValido() {
-        CuponService service = new CuponService();
-        Cupon cupon = new Cupon();
-        cupon.setCodigo("INVALIDO");
-        double total = 100.0;
-        double resultado = service.aplicar(total, cupon);
-        assertEquals(100.0, resultado);
+        assertEquals(esperado, resultado);
     }
 }

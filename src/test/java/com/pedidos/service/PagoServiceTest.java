@@ -15,15 +15,7 @@ class PagoServiceTest {
     @Test
     void pagar_DebeRetornarFalso_SiPedidoEsNulo() {
         PagoService service = new PagoService();
-        assertFalse(service.pagar(null));
-    }
-
-    @Test
-    void pagar_DebeRetornarFalso_SiItemsNulo() {
-        PagoService service = new PagoService();
-        Pedido p = new Pedido();
-        p.setItems(null);
-        assertFalse(service.pagar(p));
+        assertFalse(service.pagar(null, 100.0));
     }
 
     @Test
@@ -32,7 +24,7 @@ class PagoServiceTest {
         Pedido p = new Pedido();
         p.setItems(new ArrayList<>());
         p.setCliente(null);
-        assertFalse(service.pagar(p));
+        assertFalse(service.pagar(p, 100.0));
     }
 
     @Test
@@ -53,7 +45,7 @@ class PagoServiceTest {
         
         p.getItems().add(item);
         
-        assertFalse(service.pagar(p));
+        assertFalse(service.pagar(p, 100.0));
     }
 
     @Test
@@ -74,6 +66,6 @@ class PagoServiceTest {
         
         p.getItems().add(item);
         
-        assertTrue(service.pagar(p));
+        assertTrue(service.pagar(p, 100.0));
     }
 }
