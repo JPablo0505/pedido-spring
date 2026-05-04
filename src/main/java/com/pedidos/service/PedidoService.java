@@ -1,6 +1,9 @@
 package com.pedidos.service;
 
-import com.pedidos.model.*;
+import com.pedidos.model.Pedido;
+import com.pedidos.model.Cupon;
+import com.pedidos.model.ItemPedido;
+import com.pedidos.model.Cliente;
 import com.pedidos.repository.PedidoRepository;
 import org.springframework.stereotype.Service;
 

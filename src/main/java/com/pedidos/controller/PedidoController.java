@@ -1,6 +1,7 @@
 package com.pedidos.controller;
 
-import com.pedidos.model.*;
+import com.pedidos.model.Pedido;
+import com.pedidos.model.Cupon;
 import com.pedidos.service.PedidoService;
 import org.springframework.web.bind.annotation.*;
 
